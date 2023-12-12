@@ -28,18 +28,26 @@ const Addchat = () => {
 
     const goHome = () => {
         signOut(auth)
-        .then(() => {
-            console.log('sign out successful');
-            navigate('/')
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+            .then(() => {
+                console.log('sign out successful');
+                navigate('/')
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     return (
         <>
-            Add your Message here
+            <div class="contact-form">
+                <span class="heading">Contact Us</span>
+                <form>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required=""></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
             <button onClick={goHome}>Back to Home</button>
         </>
     )
