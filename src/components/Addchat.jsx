@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, set } from "firebase/database"
 
-
 const Addchat = () => {
     const [msg, setmsg] = useState('')
     const [msgindex, setmsgindex] = useState(0)
+    let errMsg = useRef()
+    console.log(errMsg);
 
     const firebaseConfig = {
         apiKey: "AIzaSyDYQ0GMTQnbvJBzmcMz7v36UNdPaOA22z0",
@@ -55,7 +56,7 @@ const Addchat = () => {
                 <div className="contact-form">
                     {/* <span className="heading">Message</span> */}
                     <form>
-                        <small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>
+                        <small className='alert alert-danger text-center p-2 my-2' ref={errMsg}>Inputs cannot be empty</small>
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
                         <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
                         <button type="button" onClick={sendMsg}>Submit</button>
