@@ -34,7 +34,10 @@ const Showchats = () => {
         <>
             {
                 allChats.map((msg,index)=>(
-                    <h1>{index}</h1>
+                    <div key={index}>
+                        <h1>{index}</h1>
+                        <p>{msg}</p>
+                    </div>
                 ))
             }
         </>

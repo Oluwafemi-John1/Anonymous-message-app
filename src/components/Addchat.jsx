@@ -6,7 +6,6 @@ import { getDatabase, ref, set } from "firebase/database"
 
 const Addchat = () => {
     const [msg, setmsg] = useState('')
-    const [msgindex, setmsgindex] = useState(0)
     const [disp, setdisp] = useState(false)
     
 
@@ -35,9 +34,17 @@ const Addchat = () => {
     });
 
     const sendMsg = () => {
-        msg==''?setdisp(true):console.log(msg);
-        let msgRef = ref(database, `allMessages/${msgindex}`)
-        set(msgRef, msg)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+                // console.log(uid);
+                msg==''?setdisp(true):console.log(msg);
+                let msgRef = ref(database, `allMessages/${uid}`)
+                set(msgRef, msg)
+            } else {
+                navigate('/')
+            }
+        });
     }
 
     const goHome = () => {
