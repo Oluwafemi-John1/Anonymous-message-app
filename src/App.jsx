@@ -15,9 +15,20 @@ function App() {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app)
 
+    const signIn = () => {
+        // alert("ok")
+        signInAnonymously(auth)
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+
     return (
         <>
-
+            <button onClick={signIn}>Test</button>
         </>
     )
 }
