@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <>
         <h1>Welcome to SQI Student Party 2023</h1>
-        <button onClick={signIn}>Test</button>
+        <button onClick={signIn}>Continue</button>
     </>
   )
 }
