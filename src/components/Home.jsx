@@ -1,6 +1,7 @@
 import React from 'react'
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const firebaseConfig = {
@@ -15,11 +16,14 @@ const Home = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app)
 
+    let navigate = useNavigate()
+
     const signIn = () => {
         // alert("ok")
         signInAnonymously(auth)
         .then((res)=>{
             console.log(res);
+            navigate('/addchat')
         })
         .catch((err)=>{
             console.log(err);
@@ -27,6 +31,7 @@ const Home = () => {
     }
   return (
     <>
+        <h1>Welcome to SQI Student Party 2023</h1>
         <button onClick={signIn}>Test</button>
     </>
   )
