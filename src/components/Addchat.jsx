@@ -7,6 +7,7 @@ import { getDatabase, ref, set } from "firebase/database"
 const Addchat = () => {
     const [msg, setmsg] = useState('')
     const [msgindex, setmsgindex] = useState(0)
+    const [disp, setdisp] = useState('')
     let errMsg = useRef()
     console.log(errMsg);
 
@@ -34,7 +35,7 @@ const Addchat = () => {
     });
 
     const sendMsg = () => {
-        msg==''?console.log(errMsg):console.log(msg);
+        msg==''?errMsg.current.style.display=="block":console.log(msg);
         let msgRef = ref(database, `allMessages/${msgindex}`)
         set(msgRef, msg)
     }
@@ -56,7 +57,7 @@ const Addchat = () => {
                 <div className="contact-form">
                     {/* <span className="heading">Message</span> */}
                     <form>
-                        <small className='alert alert-danger text-center p-2 my-2' ref={errMsg}>Inputs cannot be empty</small>
+                        <small className='alert alert-danger text-center p-2 my-2' ref={errMsg} style={{display: 'none'}}>Inputs cannot be empty</small>
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
                         <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
                         <button type="button" onClick={sendMsg}>Submit</button>
