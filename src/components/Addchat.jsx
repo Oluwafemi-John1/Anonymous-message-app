@@ -34,7 +34,7 @@ const Addchat = () => {
     });
 
     const sendMsg = () => {
-        msg==''?alert("Can not be empty"):console.log(msg);
+        msg==''?console.log(errMsg):console.log(msg);
         let msgRef = ref(database, `allMessages/${msgindex}`)
         set(msgRef, msg)
     }
