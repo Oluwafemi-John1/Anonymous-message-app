@@ -56,7 +56,7 @@ const Addchat = () => {
                 <div className="contact-form">
                     {/* <span className="heading">Message</span> */}
                     <form>
-                        <small className='alert alert-danger text-center p-2 my-2' ref={errMsg} style={{display: 'none'}}>Inputs cannot be empty</small>
+                        {disp==false?console.log("no error"):<small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>}
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
                         <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
                         <button type="button" onClick={sendMsg}>Submit</button>
