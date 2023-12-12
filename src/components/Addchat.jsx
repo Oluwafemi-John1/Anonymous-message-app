@@ -7,9 +7,8 @@ import { getDatabase, ref, set } from "firebase/database"
 const Addchat = () => {
     const [msg, setmsg] = useState('')
     const [msgindex, setmsgindex] = useState(0)
-    const [disp, setdisp] = useState('')
-    let errMsg = useRef()
-    console.log(errMsg);
+    const [disp, setdisp] = useState(false)
+    
 
     const firebaseConfig = {
         apiKey: "AIzaSyDYQ0GMTQnbvJBzmcMz7v36UNdPaOA22z0",
@@ -35,7 +34,7 @@ const Addchat = () => {
     });
 
     const sendMsg = () => {
-        msg==''?errMsg.current.style.display=="block":console.log(msg);
+        msg==''?setdisp(true):console.log(msg);
         let msgRef = ref(database, `allMessages/${msgindex}`)
         set(msgRef, msg)
     }
