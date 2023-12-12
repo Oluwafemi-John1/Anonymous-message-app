@@ -16,7 +16,8 @@ const Addchat = () => {
         projectId: "anonymous-app-7a80c",
         storageBucket: "anonymous-app-7a80c.appspot.com",
         messagingSenderId: "189556869649",
-        appId: "1:189556869649:web:e7853b7e4b1ed866c03fb0"
+        appId: "1:189556869649:web:e7853b7e4b1ed866c03fb0",
+        databaseURL: "https://anonymous-app-7a80c-default-rtdb.firebaseio.com"
     };
 
     let navigate = useNavigate()
