@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { getDatabase, ref, set } from "firebase/database"
 
 
 const Addchat = () => {
+    const [msg, setmsg] = useState('')
     const firebaseConfig = {
         apiKey: "AIzaSyDYQ0GMTQnbvJBzmcMz7v36UNdPaOA22z0",
         authDomain: "anonymous-app-7a80c.firebaseapp.com",
@@ -29,6 +30,12 @@ const Addchat = () => {
         }
     });
 
+    const sendMsg = () => {
+        console.log(msg);
+        let msgRef = ref(database, `allMessages/${uid}`)
+        set(msgRef, msg)
+    }
+    
     const goHome = () => {
         signOut(auth)
             .then(() => {
@@ -47,8 +54,8 @@ const Addchat = () => {
                     {/* <span className="heading">Message</span> */}
                     <form>
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
-                        <textarea id="message" name="message" required=""></textarea>
-                        <button type="button">Submit</button>
+                        <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
+                        <button type="button" onClick={sendMsg}>Submit</button>
                     </form>
                 </div>
                 <button onClick={goHome} className='btn btn-primary my-3'>Back to Home</button>
