@@ -48,7 +48,7 @@ const Addchat = () => {
                         <button type="button">Submit</button>
                     </form>
                 </div>
-                <button onClick={goHome}>Back to Home</button>
+                <button onClick={goHome} className='btn btn-primary my-3'>Back to Home</button>
             </div>
 
         </>
