@@ -39,13 +39,15 @@ const Addchat = () => {
 
     return (
         <>
-            <div class="contact-form">
-                <span class="heading">Contact Us</span>
-                <form>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required=""></textarea>
-                    <button type="submit">Submit</button>
-                </form>
+            <div className="col-lg-8 col-10 mx-auto">
+                <div class="contact-form">
+                    <span class="heading">Contact Us</span>
+                    <form>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required=""></textarea>
+                        <button type="button">Submit</button>
+                    </form>
+                </div>
             </div>
 
             <button onClick={goHome}>Back to Home</button>
