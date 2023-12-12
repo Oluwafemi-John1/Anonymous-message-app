@@ -2,6 +2,7 @@ import React from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
+import { getDatabase, ref, set } from "firebase/database"
 
 
 const Addchat = () => {
@@ -17,6 +18,8 @@ const Addchat = () => {
     let navigate = useNavigate()
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app)
+    const database = getDatabase(app)
+
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const uid = user.uid;
