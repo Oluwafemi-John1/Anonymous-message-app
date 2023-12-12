@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
 import { getDatabase, onValue, ref } from "firebase/database"
@@ -6,7 +6,7 @@ import { getDatabase, onValue, ref } from "firebase/database"
 
 const Showchats = () => {
     const [allChats, setallChats] = useState([]);
-    
+
     const firebaseConfig = {
         apiKey: "AIzaSyDYQ0GMTQnbvJBzmcMz7v36UNdPaOA22z0",
         authDomain: "anonymous-app-7a80c.firebaseapp.com",
@@ -19,17 +19,26 @@ const Showchats = () => {
 
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app)
-    let newRef = ref(database, "allMessages") 
 
-    onValue(newRef, (snapshot)=>{
-        const data = snapshot.val()
-        console.log(data);
-    })
-  return (
-    <>
-        
-    </>
-  )
+    useEffect(()=>{
+        let newRef = ref(database, "allMessages")
+        onValue(newRef, (snapshot) => {
+            let data = snapshot.val()
+            setallChats(data)
+        })
+
+    }, [])
+
+    
+    return (
+        <>
+            {
+                allChats.map((msg,index)=>(
+                    <h1>{index}</h1>
+                ))
+            }
+        </>
+    )
 }
 
 export default Showchats
