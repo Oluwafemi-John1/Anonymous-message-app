@@ -1,6 +1,8 @@
 import React from 'react'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { useNavigate } from 'react-router-dom';
+
 
 const Addchat = () => {
     const firebaseConfig = {
@@ -12,6 +14,7 @@ const Addchat = () => {
         appId: "1:189556869649:web:e7853b7e4b1ed866c03fb0"
     };
 
+    let navigate = useNavigate()
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app)
     onAuthStateChanged(auth, (user) => {
@@ -19,9 +22,21 @@ const Addchat = () => {
             const uid = user.uid;
             console.log(uid);
         } else {
-            
+            navigate('/')
         }
     });
+
+    const goHome = () => {
+        signOut(auth)
+        .then(() => {
+            console.log('sign out successful');
+            navigate('/')
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
+
     return (
         <>
             Add your Message here
