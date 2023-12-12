@@ -7,6 +7,8 @@ import { getDatabase, ref, set } from "firebase/database"
 
 const Addchat = () => {
     const [msg, setmsg] = useState('')
+    const [msgindex, setmsgindex] = useState(0)
+
     const firebaseConfig = {
         apiKey: "AIzaSyDYQ0GMTQnbvJBzmcMz7v36UNdPaOA22z0",
         authDomain: "anonymous-app-7a80c.firebaseapp.com",
@@ -31,11 +33,11 @@ const Addchat = () => {
     });
 
     const sendMsg = () => {
-        console.log(msg);
-        let msgRef = ref(database, `allMessages/${uid}`)
+        msg==''?alert("Can not be empty"):console.log(msg);
+        let msgRef = ref(database, `allMessages/${msgindex}`)
         set(msgRef, msg)
     }
-    
+
     const goHome = () => {
         signOut(auth)
             .then(() => {
