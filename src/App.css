@@ -1,3 +1,20 @@
+body::after {
+    position: absolute;
+    content: "";
+    background-color: #173b53;
+    inset: 0;
+    left: 35%;
+    z-index: -1;
+    clip-path: polygon(30% 0,
+            100% 0,
+            100% 100%,
+            20% 100%,
+            0% 70%);
+}
+
+body, .modall {
+    background-color: #0F2A3D !important;
+}
 
 .contact-form {
     background-color: #f2f2f2;
