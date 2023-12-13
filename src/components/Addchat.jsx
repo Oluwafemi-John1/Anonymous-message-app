@@ -7,6 +7,7 @@ import { getDatabase, ref, set, onValue } from "firebase/database"
 const Addchat = () => {
     const [msg, setmsg] = useState('')
     const [disp, setdisp] = useState(false)
+    const [disp2, setdisp2] = useState(false)
     const [count, setcount] = useState(0)
     
 
@@ -45,12 +46,15 @@ const Addchat = () => {
     }, [])
 
     const sendMsg = () => {
-        setcount(+1)
         let msgs = {msg}
-        msg==''?setdisp(true):console.log(msg);
-        let msgRef = ref(database, `allMessages/${count}`)
-        let saved = set(msgRef, msgs)
-        saved?navigate('/'):navigate('/addchat')
+        if (msg=='') {
+            setdisp(true)
+        } else {
+            let msgRef = ref(database, `allMessages/${count}`)
+            let saved = set(msgRef, msgs)
+            saved?setdisp2(true):navigate('/addchat')
+            setmsg('')
+        }
     }
 
     const goHome = () => {
@@ -71,6 +75,7 @@ const Addchat = () => {
                     {/* <span className="heading">Message</span> */}
                     <form>
                         {disp==false?console.log(disp):<small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>}
+                        {disp2==false?console.log(disp):<small className='alert alert-success text-center p-2 my-2'>Succesfully sent!</small>}
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
                         <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
                         <button type="button" onClick={sendMsg}>Submit</button>
