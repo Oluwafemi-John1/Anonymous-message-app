@@ -32,8 +32,10 @@ const Home = () => {
     }
   return (
     <>
-        <h1>Welcome to SQI Student Party 2023</h1>
-        <button onClick={signIn}>Continue</button>
+        <div className="mt-5 col-lg-8 col-10 mx-auto text-center p-lg-5 p-2">
+            <h1 className='mt-lg-5 mt-4 text-light'>Welcome to SQI Student Party 2023</h1>
+            <button onClick={signIn} className='btn btn-success my-5'>Continue</button>
+        </div>
     </>
   )
 }
