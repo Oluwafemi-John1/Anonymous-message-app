@@ -31,7 +31,7 @@ const Showchats = () => {
     
     return (
         <>
-            <div className='text-light'>
+            <div className='container mt-2 text-light'>
                 {
                     allChats.map((info,index)=>(
                         <div key={index}>
