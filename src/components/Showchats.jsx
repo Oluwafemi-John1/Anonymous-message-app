@@ -34,7 +34,7 @@ const Showchats = () => {
             {
                 allChats.map((info,index)=>(
                     <div key={index}>
-                        <h1>{index}</h1>
+                        <h1>{index+1}</h1>
                         <p>{info.msg}</p>
                     </div>
                 ))

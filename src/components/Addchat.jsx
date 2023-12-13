@@ -40,6 +40,7 @@ const Addchat = () => {
         onValue(newRef, (snapshot) => {
             let data = snapshot.val()
             console.log(data);
+            setcount(data.length)
         })
     }, [])
 
@@ -49,20 +50,7 @@ const Addchat = () => {
         msg==''?setdisp(true):console.log(msg);
         let msgRef = ref(database, `allMessages/${count}`)
         let saved = set(msgRef, msgs)
-        // if (saved) {
-        //     navigate('/')
-        // } else {
-        //     navigate('/addchat')
-        // }
         saved?navigate('/'):navigate('/addchat')
-        // onAuthStateChanged(auth, (user) => {
-        //     if (user) {
-        //         const uid = user.uid;
-        //         console.log(uid);
-        //     } else {
-        //         navigate('/')
-        //     }
-        // });
     }
 
     const goHome = () => {
