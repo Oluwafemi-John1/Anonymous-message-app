@@ -31,14 +31,17 @@ const Showchats = () => {
     
     return (
         <>
-            {
-                allChats.map((info,index)=>(
-                    <div key={index}>
-                        <h1>{index+1}</h1>
-                        <p>{info.msg}</p>
-                    </div>
-                ))
-            }
+            <div className='text-light'>
+                {
+                    allChats.map((info,index)=>(
+                        <div key={index}>
+                            <h1>{index+1}</h1>
+                            <p>{info.msg}</p>
+                            <small>{info.time}</small>
+                        </div>
+                    ))
+                }
+            </div>
         </>
     )
 }
