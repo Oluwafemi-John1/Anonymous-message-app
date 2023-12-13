@@ -19,24 +19,23 @@ const Showchats = () => {
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app)
     let newRef = ref(database, "allMessages")
-    onValue(newRef, (snapshot) => {
-        let data = snapshot.val()
-        console.log(data);
-        setallChats(data)
-    })
-
+    
     useEffect(()=>{
-
+        onValue(newRef, (snapshot) => {
+            let data = snapshot.val()
+            console.log(data);
+            setallChats(data)
+        })
     }, [])
 
     
     return (
         <>
             {
-                allChats.map((msg,index)=>(
+                allChats.map((info,index)=>(
                     <div key={index}>
                         <h1>{index}</h1>
-                        <p>{msg}</p>
+                        <p>{info.msg}</p>
                     </div>
                 ))
             }
