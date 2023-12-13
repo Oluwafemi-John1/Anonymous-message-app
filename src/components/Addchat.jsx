@@ -49,6 +49,7 @@ const Addchat = () => {
         let msgs = {msg}
         if (msg=='') {
             setdisp(true)
+            setdisp2(false)
         } else {
             let msgRef = ref(database, `allMessages/${count}`)
             let saved = set(msgRef, msgs)
