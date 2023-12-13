@@ -7,6 +7,7 @@ import { getDatabase, ref, set } from "firebase/database"
 const Addchat = () => {
     const [msg, setmsg] = useState('')
     const [disp, setdisp] = useState(false)
+    const [count, setcount] = useState(0)
     
 
     const firebaseConfig = {
@@ -28,7 +29,6 @@ const Addchat = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const uid = user.uid;
-                console.log(uid);
             } else {
                 navigate('/')
             }
@@ -38,18 +38,24 @@ const Addchat = () => {
 
     const sendMsg = () => {
         let msgs = {msg}
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                console.log(uid);
-                msg==''?setdisp(true):console.log(msg);
-                let msgRef = ref(database, `allMessages/${uid}`)
-                let saved = set(msgRef, msgs)
-                saved?navigate('/'):navigate('/addchat')
-            } else {
-                navigate('/')
-            }
-        });
+        msgs.msg==''?setdisp(true):console.log(msg);
+        let msgRef = ref(database, `allMessages/${count}`)
+        let saved = set(msgRef, msgs)
+        if (saved) {
+            navigate('/')
+            setcount(+1)
+        } else {
+            navigate('/addchat')
+        }
+        // saved?navigate('/'):navigate('/addchat')
+        // onAuthStateChanged(auth, (user) => {
+        //     if (user) {
+        //         const uid = user.uid;
+        //         console.log(uid);
+        //     } else {
+        //         navigate('/')
+        //     }
+        // });
     }
 
     const goHome = () => {
@@ -69,7 +75,7 @@ const Addchat = () => {
                 <div className="contact-form">
                     {/* <span className="heading">Message</span> */}
                     <form>
-                        {disp==false?console.log("no error"):<small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>}
+                        {disp==false?console.log(disp):<small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>}
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
                         <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
                         <button type="button" onClick={sendMsg}>Submit</button>
