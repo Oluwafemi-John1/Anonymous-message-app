@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
@@ -24,14 +24,17 @@ const Addchat = () => {
     const auth = getAuth(app)
     const database = getDatabase(app)
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            const uid = user.uid;
-            console.log(uid);
-        } else {
-            navigate('/')
-        }
-    });
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+                console.log(uid);
+            } else {
+                navigate('/')
+            }
+        });
+    }, [])
+    
 
     const sendMsg = () => {
         msg==''?setdisp(true):console.log(msg);
