@@ -40,7 +40,7 @@ const Addchat = () => {
     useEffect(()=>{
         onValue(newRef, (snapshot) => {
             let data = snapshot.val()
-            console.log(data);
+            // console.log(data);
             setcount(data.length)
         })
     }, [])
@@ -52,8 +52,9 @@ const Addchat = () => {
         } else {
             let msgRef = ref(database, `allMessages/${count}`)
             let saved = set(msgRef, msgs)
-            saved?setdisp2(true):navigate('/addchat')
             setmsg('')
+            setdisp(false)
+            saved?setdisp2(true):navigate('/addchat')
         }
     }
 
@@ -74,8 +75,8 @@ const Addchat = () => {
                 <div className="contact-form">
                     {/* <span className="heading">Message</span> */}
                     <form>
-                        {disp==false?console.log(disp):<small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>}
-                        {disp2==false?console.log(disp):<small className='alert alert-success text-center p-2 my-2'>Succesfully sent!</small>}
+                        {disp==false?console.error():<small className='alert alert-danger text-center p-2 my-2'>Inputs cannot be empty</small>}
+                        {disp2==false?console.error():<small className='alert alert-success text-center p-2 my-2'>Succesfully sent!</small>}
                         <label htmlFor="message" className='fw-bold fs-3'>Message:</label>
                         <textarea id="message" name="message" required="" onChange={(e)=>setmsg(e.target.value)} value={msg}></textarea>
                         <button type="button" onClick={sendMsg}>Submit</button>
