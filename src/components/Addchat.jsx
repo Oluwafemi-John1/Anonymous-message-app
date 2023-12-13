@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { useNavigate } from 'react-router-dom';
-import { getDatabase, ref, set } from "firebase/database"
+import { getDatabase, ref, set, onValue } from "firebase/database"
 
 const Addchat = () => {
     const [msg, setmsg] = useState('')
@@ -35,6 +35,13 @@ const Addchat = () => {
         });
     }, [])
     
+    let newRef = ref(database, "allMessages")
+    useEffect(()=>{
+        onValue(newRef, (snapshot) => {
+            let data = snapshot.val()
+            console.log(data);
+        })
+    }, [])
 
     const sendMsg = () => {
         setcount(+1)
