@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { initializeApp } from "firebase/app";
-import { useNavigate } from 'react-router-dom';
 import { getDatabase, onValue, ref } from "firebase/database"
 
 
@@ -19,13 +18,14 @@ const Showchats = () => {
 
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app)
+    let newRef = ref(database, "allMessages")
+    onValue(newRef, (snapshot) => {
+        let data = snapshot.val()
+        console.log(data);
+        setallChats(data)
+    })
 
     useEffect(()=>{
-        let newRef = ref(database, "allMessages")
-        onValue(newRef, (snapshot) => {
-            let data = snapshot.val()
-            setallChats(data)
-        })
 
     }, [])
 
