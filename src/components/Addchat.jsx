@@ -34,18 +34,18 @@ const Addchat = () => {
     });
 
     const sendMsg = () => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                // console.log(uid);
-                msg==''?setdisp(true):console.log(msg);
-                let msgRef = ref(database, `allMessages/${uid}`)
-                set(msgRef, msg)
-            } else {
-                navigate('/')
-            }
-        });
+        msg==''?setdisp(true):console.log(msg);
+        let msgRef = ref(database, `allMessages/${uid}`)
+        set(msgRef, msg)
     }
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+            console.log(uid);
+        } else {
+            navigate('/')
+        }
+    });
 
     const goHome = () => {
         signOut(auth)
