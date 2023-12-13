@@ -37,17 +37,17 @@ const Addchat = () => {
     
 
     const sendMsg = () => {
+        setcount(+1)
         let msgs = {msg}
-        msgs.msg==''?setdisp(true):console.log(msg);
+        msg==''?setdisp(true):console.log(msg);
         let msgRef = ref(database, `allMessages/${count}`)
         let saved = set(msgRef, msgs)
-        if (saved) {
-            navigate('/')
-            setcount(+1)
-        } else {
-            navigate('/addchat')
-        }
-        // saved?navigate('/'):navigate('/addchat')
+        // if (saved) {
+        //     navigate('/')
+        // } else {
+        //     navigate('/addchat')
+        // }
+        saved?navigate('/'):navigate('/addchat')
         // onAuthStateChanged(auth, (user) => {
         //     if (user) {
         //         const uid = user.uid;
