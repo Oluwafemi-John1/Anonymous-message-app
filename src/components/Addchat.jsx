@@ -47,7 +47,8 @@ const Addchat = () => {
 
     const sendMsg = () => {
         let time = new Date().toLocaleTimeString()
-        let msgs = {msg, time}
+        let daty = new Date().toLocaleTimeString()
+        let msgs = {msg, time, daty}
         if (msg=='') {
             setdisp(true)
             setdisp2(false)
