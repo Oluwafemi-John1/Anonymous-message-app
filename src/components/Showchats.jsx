@@ -39,7 +39,7 @@ const Showchats = () => {
                         allChats==null?console.log('ok'):allChats.map((info, index) => (
                             <div key={index} className="card my-lg-3 my-2" style={{backgroundColor: '#291D1E', color: '#F5A454'}}>
                                 <div className="card-body">
-                                    <h6 className="card-title">{index + 1}</h6>
+                                    <h6 className="card-title">{index+1}</h6>
                                     <hr />
                                     <p className="card-text fs-5 mx-4"><q>{info.msg}</q></p>
                                     <p className='mt-5 fs-6'>{info.time}&nbsp;&nbsp;{info.daty}</p>

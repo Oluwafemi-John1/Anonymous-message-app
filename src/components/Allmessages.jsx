@@ -29,14 +29,19 @@ const Allmessages = () => {
 
     const deleteMsg = (index) => {
         let dRef = ref(database, `allMessages/${index}`)
-        remove(dRef)
-        .then((res)=>{
-            console.log(res, "deleted succssfully");
-            alert('izz gone')
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        let confirmation = confirm("Una sure say you wan delete am?")
+        if (confirmation==true) {
+            remove(dRef)
+            .then((res)=>{
+                console.log(res, "deleted succssfully");
+                alert('izz gone')
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        } else {
+            console.log("ko delete o");
+        }
     }
   return (
     <>
