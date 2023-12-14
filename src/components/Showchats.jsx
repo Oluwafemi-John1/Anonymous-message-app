@@ -32,22 +32,20 @@ const Showchats = () => {
     return (
         <>
             <div className='container mt-2 text-light'>
+                <div className='row'>
+                    <h1 className='text-warning text-decoration-underline'>All Messages</h1>
                 {
                     allChats.map((info, index) => (
-                        <div key={index}>
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <div className="card my-3">
+                                    <div className="card-body">
+                                        <h6 className="card-title">{index+1}</h6>
+                                        <p className="card-text">{info.msg}</p>
+                                        <small>{info.time}</small>
+                                    </div>
                                 </div>
-                            </div>
-                            <h1>{index + 1}</h1>
-                            <p>{info.msg}</p>
-                            <small>{info.time}</small>
-                        </div>
-                    ))
-                }
+                            ))
+                        }
+                    </div>
             </div>
         </>
     )
