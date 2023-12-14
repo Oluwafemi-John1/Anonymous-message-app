@@ -36,7 +36,7 @@ const Home = () => {
                 <h1 className='mt-lg-5 mt-4 text-light'>Welcome to SQI Student Party 2023!🎉</h1>
                 <h3 className='text-light text-uppercase mt-lg-5 mt-4 animate__tada animate__animated animate__delay-2s fw-bold text-decoration-underline'>Anonymous SMS Platform</h3>
                 <button onClick={signIn} className='btn btn-success my-5'>Continue</button>
-                <p className='mt-4 text-warning fs-4' style={{textAlign: 'justify'}}>
+                <p className='mt-4 text-warning fs-5' style={{textAlign: 'justify'}}>
                     This Platform ensures your privacy🔏 so that you stay anonymous every time you send in a  message. You don't have to worry about your identity being revealed🔑. You are anonymous until you ever choose to reveal your identity🧑‍🤝‍🧑.</p>
             </div>
         </>
