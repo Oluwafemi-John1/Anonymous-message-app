@@ -27,8 +27,9 @@ const Allmessages = () => {
         })
     }, [])
 
-    const deleteMsg = () => {
-        remove(newRef)
+    const deleteMsg = (index) => {
+        let dRef = ref(database, `allMessages/${index}`)
+        remove(dRef)
         .then((res)=>{
             console.log(res, "deleted succssfully");
         })
@@ -50,7 +51,7 @@ const Allmessages = () => {
                                     <hr />
                                     <p className="card-text fs-5 mx-4"><q>{info.msg}</q></p>
                                     <p className='fs-6'>{info.time}</p>
-                                    <button className='btn btn-danger' onClick={deleteMsg}>Delete</button>
+                                    <button className='btn btn-danger' onClick={()=>deleteMsg(index)}>Delete</button>
                                 </div>
                             </div>
                         ))
