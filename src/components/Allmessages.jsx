@@ -27,6 +27,15 @@ const Allmessages = () => {
         })
     }, [])
 
+    const deleteMsg = () => {
+        newRef.remove()
+        .then((res)=>{
+            console.log(res, "deleted succssfully");
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
   return (
     <>
         <div className='container mt-2 text-light col-11'>
@@ -41,7 +50,7 @@ const Allmessages = () => {
                                     <hr />
                                     <p className="card-text fs-5 mx-4"><q>{info.msg}</q></p>
                                     <p className='fs-6'>{info.time}</p>
-                                    <button className='btn btn-danger'>Delete</button>
+                                    <button className='btn btn-danger' onClick={deleteMsg}>Delete</button>
                                 </div>
                             </div>
                         ))
