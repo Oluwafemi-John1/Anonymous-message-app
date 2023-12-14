@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref } from "firebase/database"
+import { getDatabase, onValue, ref, remove } from "firebase/database"
 
 const Allmessages = () => {
     const [allChats, setallChats] = useState([]);
@@ -28,7 +28,7 @@ const Allmessages = () => {
     }, [])
 
     const deleteMsg = () => {
-        newRef.remove()
+        remove(newRef)
         .then((res)=>{
             console.log(res, "deleted succssfully");
         })
