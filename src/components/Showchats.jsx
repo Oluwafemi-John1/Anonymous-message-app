@@ -35,7 +35,8 @@ const Showchats = () => {
                 <div className='row'>
                     <h1 className='text-decoration-underline text-center' style={{color:'#F5A454'}}>All Messages</h1>
                     {
-                        allChats.map((info, index) => (
+
+                        allChats==null?console.log('ok'):allChats.map((info, index) => (
                             <div key={index} className="card my-lg-3 my-2" style={{backgroundColor: '#291D1E', color: '#F5A454'}}>
                                 <div className="card-body">
                                     <h6 className="card-title">{index + 1}</h6>
