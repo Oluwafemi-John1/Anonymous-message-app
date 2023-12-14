@@ -57,7 +57,14 @@ const Addchat = () => {
             let saved = set(msgRef, msgs)
             setmsg('')
             setdisp(false)
-            saved?setdisp2(true):navigate('/addchat')
+            if (saved) {
+                setdisp2(true)
+                setTimeout(()=>{
+                    navigate('/')
+                },2000)
+            } else {
+                navigate('/addchat')
+            }
         }
     }
 
