@@ -22,22 +22,25 @@ const Home = () => {
     const signIn = () => {
         // alert("ok")
         signInAnonymously(auth)
-        .then((res)=>{
-            console.log(res);
-            navigate('/addchat')
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+            .then((res) => {
+                console.log(res);
+                navigate('/addchat')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
-  return (
-    <>
-        <div className="mt-5 col-lg-8 col-10 mx-auto text-center p-lg-5 p-2">
-            <h1 className='mt-lg-5 mt-4 text-light'>Welcome to SQI Student Party 2023</h1>
-            <button onClick={signIn} className='btn btn-success my-5'>Continue</button>
-        </div>
-    </>
-  )
+    return (
+        <>
+            <div className="mt-5 col-lg-8 col-10 mx-auto text-center p-lg-5 p-2">
+                <h1 className='mt-lg-5 mt-4 text-light'>Welcome to SQI Student Party 2023</h1>
+                <h4 className='text-light text-uppercase mt-lg-5 mt-4'>Anonymous SMS Platform</h4>
+                <button onClick={signIn} className='btn btn-success my-5'>Continue</button>
+                <p className='mt-4 text-warning fs-4'>
+                    This Platform ensures your privacy🔏 so that you stay anonymous every time you send in a  message. You don't have to worry about your identity being revealed🔑. You are anonymous until you ever choose to reveal your identity🧑‍🤝‍🧑.</p>
+            </div>
+        </>
+    )
 }
 
 export default Home
