@@ -19,8 +19,8 @@ const Showchats = () => {
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app)
     let newRef = ref(database, "allMessages")
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         onValue(newRef, (snapshot) => {
             let data = snapshot.val()
             console.log(data);
@@ -28,14 +28,21 @@ const Showchats = () => {
         })
     }, [])
 
-    
+
     return (
         <>
             <div className='container mt-2 text-light'>
                 {
-                    allChats.map((info,index)=>(
+                    allChats.map((info, index) => (
                         <div key={index}>
-                            <h1>{index+1}</h1>
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                            <h1>{index + 1}</h1>
                             <p>{info.msg}</p>
                             <small>{info.time}</small>
                         </div>
