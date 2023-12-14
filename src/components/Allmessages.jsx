@@ -32,6 +32,7 @@ const Allmessages = () => {
         remove(dRef)
         .then((res)=>{
             console.log(res, "deleted succssfully");
+            alert('izz gone')
         })
         .catch((err)=>{
             console.log(err);
