@@ -51,7 +51,7 @@ const Allmessages = () => {
                                     <h6 className="card-title">{index + 1}</h6>
                                     <hr />
                                     <p className="card-text fs-5 mx-4"><q>{info.msg}</q></p>
-                                    <p className='fs-6'>{info.time}</p>
+                                    <p className='fs-6'>{info.time}&nbsp;&nbsp;{info.daty}</p>
                                     <button className='btn btn-danger' onClick={()=>deleteMsg(index)}>Delete</button>
                                 </div>
                             </div>
