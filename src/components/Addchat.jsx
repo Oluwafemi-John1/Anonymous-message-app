@@ -61,7 +61,7 @@ const Addchat = () => {
                 setdisp2(true)
                 setTimeout(()=>{
                     navigate('/')
-                },2000)
+                },1500)
             } else {
                 navigate('/addchat')
             }
