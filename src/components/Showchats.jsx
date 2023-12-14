@@ -31,21 +31,22 @@ const Showchats = () => {
 
     return (
         <>
-            <div className='container mt-2 text-light'>
+            <div className='container mt-2 text-light col-11'>
                 <div className='row'>
-                    <h1 className='text-warning text-decoration-underline'>All Messages</h1>
-                {
-                    allChats.map((info, index) => (
-                                <div className="card my-3">
-                                    <div className="card-body">
-                                        <h6 className="card-title">{index+1}</h6>
-                                        <p className="card-text">{info.msg}</p>
-                                        <small>{info.time}</small>
-                                    </div>
+                    <h1 className='text-decoration-underline text-center' style={{color:'#F5A454'}}>All Messages</h1>
+                    {
+                        allChats.map((info, index) => (
+                            <div key={index} className="card my-lg-3 my-2" style={{backgroundColor: '#291D1E', color: '#F5A454'}}>
+                                <div className="card-body">
+                                    <h6 className="card-title">{index + 1}</h6>
+                                    <hr />
+                                    <p className="card-text fs-5 mx-4"><q>{info.msg}</q></p>
+                                    <p className='mt-5 fs-6'>{info.time}</p>
                                 </div>
-                            ))
-                        }
-                    </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         </>
     )
